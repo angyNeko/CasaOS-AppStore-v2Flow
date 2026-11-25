@@ -1,0 +1,80 @@
+services:
+  aerofoil:
+    container_name: aerofoil
+    devices: []
+    environment:
+      - PUID=999
+      - PGID=1000
+    image: luketanti/aerofoil:latest
+    network_mode: bridge
+    ports:
+      - 8465:8465
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - source: /media/Quick-Storage/ROMs/Switch
+        target: /games
+        type: bind
+      - source: /DATA/Downloads
+        target: /downloads
+        type: bind
+      - source: /DATA/AppData/$AppID/config
+        target: /app/config
+        type: bind
+      - source: /DATA/AppData/$AppID/data
+        target: /app/data
+        type: bind
+      - source: /DATA/AppData/$AppID/conversion-tmp
+        target: /app/conversion-tmp
+        type: bind
+      - source: /media/Quick-Storage/mine/Roms
+        target: /mnt/roms
+        type: bind
+    x-casaos:
+      envs:
+        - container: PUID
+          description:
+            en_US: User ID for write permissions
+        - container: PGID
+          description:
+            en_US: Group ID for write permissions
+      ports:
+        - container: "8465"
+          description:
+            en_US: Web Interface Port
+      volumes:
+        - container: /games
+          description:
+            en_US: Your library games directory
+        - container: /downloads
+          description:
+            en_US: Your downloads directory
+        - container: /app/config
+          description:
+            en_US: Configuration storage
+        - container: /app/data
+          description:
+            en_US: Database and local data
+        - container: /app/conversion-tmp
+          description:
+            en_US: Temporary conversion staging
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  author: luketanti
+  category: Media
+  description:
+    en_US: Personal Library Manager that turns your library into a fully
+      customizable, self-hosted Remote.
+  developer: luketanti
+  hostname: ""
+  icon: https://raw.githubusercontent.com/luketanti/AeroFoil/master/app/static/icon.png
+  id: com.luketanti.aerofoil
+  index: /
+  main: aerofoil
+  port_map: "8465"
+  scheme: http
+  title:
+    custom: AeroFoil
+    en_US: AeroFoil
