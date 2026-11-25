@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "updated_at": "2026-11-25T14:34:55Z",
+  "app_count": 2,
+  "base_url": "https://angyneko.github.io/CasaOS-AppStore-v2Flow",
+  "apps": [
+    {
+      "id": "com.bigbeartechworld.immich",
+      "title": "Immich",
+      "tagline": "Immich - Self-hosted photo and video management",
+      "category": "Media",
+      "categories": [
+        "media"
+      ],
+      "author": "BigBearTechWorld",
+      "developer": "immich-app",
+      "architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "icon": "/apps/com.bigbeartechworld.immich/assets/icon.svg",
+      "thumbnail": "",
+      "compose_url": "/apps/com.bigbeartechworld.immich/docker-compose.yml",
+      "meta_url": "/apps/com.bigbeartechworld.immich/meta.json",
+      "content_hash": "e28ce904",
+      "version": "1.0.0"
+    },
+    {
+      "id": "com.luketanti.aerofoil",
+      "title": "AeroFoil",
+      "tagline": "Personal library manager and self-hosted remote",
+      "category": "Media",
+      "categories": [
+        "media"
+      ],
+      "author": "luketanti",
+      "developer": "luketanti",
+      "architectures": [
+        "amd64",
+        "arm64"
+      ],
+      "icon": "/apps/com.luketanti.aerofoil/assets/icon.svg",
+      "thumbnail": "",
+      "compose_url": "/apps/com.luketanti.aerofoil/docker-compose.yml",
+      "meta_url": "/apps/com.luketanti.aerofoil/meta.json",
+      "content_hash": "ea5d02e2",
+      "version": "1.0.0"
+    }
+  ]
+}

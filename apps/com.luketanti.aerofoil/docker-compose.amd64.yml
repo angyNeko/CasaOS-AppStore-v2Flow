@@ -1,0 +1,44 @@
+name: aerofoil
+services:
+  aerofoil:
+    container_name: aerofoil
+    devices: []
+    environment:
+      - PUID=999
+      - PGID=1000
+    image: luketanti/aerofoil:latest@sha256:10abb67152e360c40a78bb916fb09877ed35e406d9c4e6cb7541f5ca0d056a79
+    network_mode: bridge
+    ports:
+      - 8465:8465
+    privileged: true
+    restart: unless-stopped
+    volumes:
+      - source: /media/Quick-Storage/ROMs/Switch
+        target: /games
+        type: bind
+      - source: /DATA/Downloads
+        target: /downloads
+        type: bind
+      - source: /DATA/AppData/$AppID/config
+        target: /app/config
+        type: bind
+      - source: /DATA/AppData/$AppID/data
+        target: /app/data
+        type: bind
+      - source: /DATA/AppData/$AppID/conversion-tmp
+        target: /app/conversion-tmp
+        type: bind
+      - source: /media/Quick-Storage/mine/Roms
+        target: /mnt/roms
+        type: bind
+x-casaos:
+  icon: https://angyneko.github.io/CasaOS-AppStore-v2Flow/apps/com.luketanti.aerofoil/assets/icon.svg
+  id: com.luketanti.aerofoil
+  index: /
+  main: aerofoil
+  port_map: "8465"
+  scheme: http
+  title:
+    custom: AeroFoil
+    en_US: AeroFoil
+  version: "1.0.0"

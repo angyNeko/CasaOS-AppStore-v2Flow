@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "store_id": "my-personal-zimaos-store",
+  "name": "My ZimaOS Store",
+  "description": "Personal ZimaOS app configurations for replication and migration",
+  "maintainer": "angyneko",
+  "url": "https://github.com/angyneko/CasaOS-AppStore-v2Flow"
+}

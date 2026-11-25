@@ -1,0 +1,26 @@
+{
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "author": "BigBearTechWorld",
+  "category": "Media",
+  "description": "Self-hosted photo and video storage.",
+  "developer": "immich-app",
+  "hostname": "",
+  "repo_id": "github.com@ccc18c81",
+  "tagline": "Immich - Self-hosted photo and video management",
+  "thumbnail": "",
+  "title": "Immich",
+  "base_url": "https://angyneko.github.io/CasaOS-AppStore-v2Flow",
+  "id": "com.bigbeartechworld.immich",
+  "version": "1.0.0",
+  "categories": [
+    "media"
+  ],
+  "min_memory": 0,
+  "min_image_size": {
+    "amd64": 1116868004,
+    "arm64": 832736001
+  }
+}

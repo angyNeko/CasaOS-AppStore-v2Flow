@@ -1,0 +1,75 @@
+name: immich
+networks:
+  big_bear_immich_network:
+    driver: bridge
+services:
+  database:
+    container_name: immich-postgres
+    environment:
+      PG_DATA: /var/lib/postgresql/data
+      POSTGRES_DB: immich
+      POSTGRES_PASSWORD: casaos
+      POSTGRES_USER: casaos
+    image: ghcr.io/immich-app/postgres:14-vectorchord0.4.3-pgvectors0.2.0@sha256:bcf63357191b76a916ae5eb93464d65c07511da41e3bf7a8416db519b40b1c23
+    networks:
+      - big_bear_immich_network
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/pgdata:/var/lib/postgresql/data
+  immich-machine-learning:
+    container_name: immich-machine-learning
+    environment:
+      DB_DATABASE_NAME: casaos
+      DB_HOSTNAME: immich-postgres
+      DB_PASSWORD: casaos
+      DB_PORT: 5432
+      DB_USERNAME: casaos
+      REDIS_HOSTNAME: immich-redis
+    image: ghcr.io/immich-app/immich-machine-learning:v3@sha256:0cd97dedf573d2fd4a94fb0ff35b3c42edd04b32da3532e0fa3033e176e3bc55
+    networks:
+      - big_bear_immich_network
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/$AppID/model-cache:/cache
+  immich-server:
+    container_name: immich-server
+    depends_on:
+      - redis
+      - database
+      - immich-machine-learning
+    environment:
+      DB_DATABASE_NAME: immich
+      DB_HOSTNAME: immich-postgres
+      DB_PASSWORD: casaos
+      DB_PORT: "5432"
+      DB_USERNAME: casaos
+      IMMICH_MACHINE_LEARNING_URL: http://immich-machine-learning:3003
+      REDIS_HOSTNAME: immich-redis
+    image: ghcr.io/immich-app/immich-server:v3@sha256:4405e8796d290edbd5317692ae630f12ca2e0c090d19ce7819f43e9d0665b9a8
+    networks:
+      - big_bear_immich_network
+    ports:
+      - 2283:2283
+    restart: unless-stopped
+    volumes:
+      - source: /media/HDD-4Temp/Gallery/Immich
+        target: /usr/src/app/upload
+        type: bind
+  redis:
+    container_name: immich-redis
+    image: docker.io/valkey/valkey:9@sha256:418652cfb58ef879d4978c33553735d7147016032d5aefaa14c828e611eb9dfd
+    networks:
+      - big_bear_immich_network
+    restart: always
+    volumes: []
+x-casaos:
+  icon: https://angyneko.github.io/CasaOS-AppStore-v2Flow/apps/com.bigbeartechworld.immich/assets/icon.svg
+  id: com.bigbeartechworld.immich
+  index: /
+  main: immich-server
+  port_map: "2283"
+  scheme: http
+  title:
+    custom: Immich
+    en_US: Immich
+  version: "1.0.0"

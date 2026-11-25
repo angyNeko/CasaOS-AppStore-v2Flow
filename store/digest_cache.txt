@@ -1,0 +1,3 @@
+ghcr.io/immich-app/immich-machine-learning:v3 sha256:72db2089878746176c1a5083272cd2d73e4270f839596b42bdf6b12887bbbb89
+ghcr.io/immich-app/immich-server:v3 sha256:17eee2e51be12fe7c2d0bc0b5a851c5ffbdf62fca97b975373df7c5d62a13b4b
+luketanti/aerofoil:latest sha256:10abb67152e360c40a78bb916fb09877ed35e406d9c4e6cb7541f5ca0d056a79

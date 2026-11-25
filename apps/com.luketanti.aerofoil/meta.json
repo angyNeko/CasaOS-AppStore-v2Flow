@@ -1,0 +1,24 @@
+{
+  "architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "author": "luketanti",
+  "category": "Media",
+  "description": "Personal Library Manager that turns your library into a fully customizable, self-hosted Remote.",
+  "developer": "luketanti",
+  "hostname": "",
+  "tagline": "Personal library manager and self-hosted remote",
+  "title": "AeroFoil",
+  "base_url": "https://angyneko.github.io/CasaOS-AppStore-v2Flow",
+  "id": "com.luketanti.aerofoil",
+  "version": "1.0.0",
+  "categories": [
+    "media"
+  ],
+  "min_memory": 0,
+  "min_image_size": {
+    "amd64": 164690170,
+    "arm64": 161975676
+  }
+}
