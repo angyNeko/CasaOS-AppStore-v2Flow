@@ -1,0 +1,52 @@
+networks:
+  default:
+    name: pihole_default
+services:
+  pihole:
+    cap_add:
+      - NET_ADMIN
+    container_name: pihole
+    deploy:
+      resources:
+        limits:
+          cpus: "2.00"
+          memory: 2GB
+        reservations:
+          cpus: "1.00"
+          memory: 1GB
+    environment:
+      FTLCONF_dns_listeningMode: all
+      FTLCONF_webserver_api_password: casaos
+      TZ: Asia/Taipei
+    image: pihole/pihole:latest@sha256:52762e1620160b1e8cb3e12c585d0d0b0df901395c2bad6b514db379e526a9fb
+    network_mode: bridge
+    ports:
+      - protocol: tcp
+        published: "8800"
+        target: 80
+      - protocol: tcp
+        published: "53"
+        target: 53
+      - protocol: udp
+        published: "53"
+        target: 53
+      - protocol: tcp
+        published: "8443"
+        target: 443
+    restart: unless-stopped
+    shm_size: 2GB
+    volumes:
+      - source: /DATA/AppData/pihole/etc/pihole/
+        target: /etc/pihole
+        type: bind
+x-casaos:
+  icon: https://angyneko.github.io/CasaOS-AppStore-v2Flow/apps/org.icewhale.pihole/assets/icon.svg
+  id: org.icewhale.pihole
+  index: /admin
+  main: pihole
+  port_map: "8800"
+  scheme: http
+  title:
+    custom: Pi-hole
+    en_US: Pi-hole
+  version: 2026.5.0

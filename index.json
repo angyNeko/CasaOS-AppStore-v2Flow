@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "updated_at": "2026-11-25T14:44:56Z",
-  "app_count": 2,
+  "updated_at": "2026-11-25T14:50:32Z",
+  "app_count": 3,
   "base_url": "https://angyneko.github.io/CasaOS-AppStore-v2Flow",
   "apps": [
     {
@@ -45,6 +45,29 @@
       "meta_url": "/apps/com.luketanti.aerofoil/meta.json",
       "content_hash": "ea5d02e2",
       "version": "1.0.0"
+    },
+    {
+      "id": "org.icewhale.pihole",
+      "title": "Pi-hole",
+      "tagline": "Network-wide Ad Blocking",
+      "category": "angyNeko",
+      "categories": [
+        "angyneko"
+      ],
+      "author": "angyNeko",
+      "developer": "angyNeko",
+      "architectures": [
+        "amd64",
+        "arm64",
+        "386",
+        "arm"
+      ],
+      "icon": "/apps/org.icewhale.pihole/assets/icon.svg",
+      "thumbnail": "/apps/org.icewhale.pihole/assets/thumbnaill.webp",
+      "compose_url": "/apps/org.icewhale.pihole/docker-compose.yml",
+      "meta_url": "/apps/org.icewhale.pihole/meta.json",
+      "content_hash": "94897166",
+      "version": "2026.5.0"
     }
   ]
 }
