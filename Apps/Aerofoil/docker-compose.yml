@@ -70,7 +70,7 @@ x-casaos:
       customizable, self-hosted Remote.
   developer: luketanti
   hostname: ""
-  icon: https://raw.githubusercontent.com/luketanti/AeroFoil/master/app/static/icon.png
+  icon: /Apps/Aerofoil/icon.svg
   id: com.luketanti.aerofoil
   index: /
   main: aerofoil
