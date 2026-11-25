@@ -1,0 +1,225 @@
+networks:
+  default:
+    name: pihole_default
+services:
+  pihole:
+    cap_add:
+      - NET_ADMIN
+    container_name: pihole
+    deploy:
+      resources:
+        limits:
+          cpus: "2.00"
+          memory: 2GB
+        reservations:
+          cpus: "1.00"
+          memory: 1GB
+    environment:
+      FTLCONF_dns_listeningMode: all
+      FTLCONF_webserver_api_password: casaos
+      TZ: Asia/Taipei
+    image: pihole/pihole:latest
+    labels:
+      icon: pi-hole.svg #https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/icon.svg
+    network_mode: bridge
+    ports:
+      - protocol: tcp
+        published: "8800"
+        target: 80
+      - protocol: tcp
+        published: "53"
+        target: 53
+      - protocol: udp
+        published: "53"
+        target: 53
+      - protocol: tcp
+        published: "8443"
+        target: 443
+    restart: unless-stopped
+    shm_size: 2GB
+    volumes:
+      - source: /DATA/AppData/pihole/etc/pihole/
+        target: /etc/pihole
+        type: bind
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+    - "386"
+    - arm
+  author: angyNeko
+  category: angyNeko
+  description:
+    en_GB: >
+      Pi-hole is a network-wide ad-blocking platform for Linux hardware, using
+      DNS sinkhole technology to protect devices from unwanted content without
+      requiring client-side software. Designed for home or enterprise networks,
+      it offers efficient ad blocking and network optimisation.
+
+
+      Core features include network-wide ad blocking and content blocking in
+      non-browser environments. It uses DNS sinkhole to block adverts, covering
+      mobile apps and smart TVs. Caching DNS queries speeds up everyday
+      browsing. A command-line interface ensures interoperability with reliable
+      control options.
+
+
+      It provides an intuitive web interface dashboard for viewing and managing
+      system status. An optional DHCP server function automatically protects all
+      devices. Capable of handling high query volumes on server-grade hardware,
+      it supports advert blocking over IPv4 and IPv6. With efficiency and
+      versatility at the core, the platform delivers a modern network protection
+      solution.
+
+
+      **Key Features:**
+
+      - Network-wide advert blocking via DNS sinkhole technology
+
+      - Blocking content in non-browser environments, including mobile apps and
+      smart TVs
+
+      - Caching DNS queries to speed up browsing
+
+      - Command-line interface for interoperability
+
+      - Intuitive web interface dashboard for system viewing and control
+
+      - Optional DHCP server function for automatic device protection
+
+      - Advert blocking support for IPv4 and IPv6
+
+
+      **Learn More:**
+
+      - [Pi-hole Official Website](https://pi-hole.net/)
+
+      - [Pi-hole GitHub](https://github.com/pi-hole/pi-hole)
+    en_US: >
+      Pi-hole is a network-wide ad-blocking platform for Linux hardware, using
+      DNS sinkhole technology to protect devices from unwanted content without
+      requiring client-side software. Designed for home or enterprise networks,
+      it offers efficient ad blocking and network optimization.
+
+
+      Core features include network-wide ad blocking and content blocking in
+      non-browser environments. It uses DNS sinkhole to block ads, covering
+      mobile apps and smart TVs. Caching DNS queries speeds up everyday
+      browsing. A command-line interface ensures interoperability with reliable
+      control options.
+
+
+      It provides an intuitive web interface dashboard for viewing and managing
+      system status. An optional DHCP server function automatically protects all
+      devices. Capable of handling high query volumes on server-grade hardware,
+      it supports ad blocking over IPv4 and IPv6. With efficiency and
+      versatility at the core, the platform delivers a modern network protection
+      solution.
+
+
+      **Key Features:**
+
+      - Network-wide ad blocking via DNS sinkhole technology
+
+      - Blocking content in non-browser environments, including mobile apps and
+      smart TVs
+
+      - Caching DNS queries to speed up browsing
+
+      - Command-line interface for interoperability
+
+      - Intuitive web interface dashboard for system viewing and control
+
+      - Optional DHCP server function for automatic device protection
+
+      - Ad blocking support for IPv4 and IPv6
+
+
+      **Learn More:**
+
+      - [Pi-hole Official Website](https://pi-hole.net/)
+
+      - [Pi-hole GitHub](https://github.com/pi-hole/pi-hole)
+      
+      Pi-hole은 DNS sinkhole 기술을 사용하여 클라이언트 측 소프트웨어 없이도 기기를 원치 않는 콘텐츠로부터 보호하는
+      Linux 하드웨어용 네트워크 전체 광고 차단 플랫폼입니다. 가정용 또는 기업용 네트워크를 위해 설계되어 효율적인 광고 차단과
+      네트워크 최적화를 제공합니다.
+
+
+      핵심 기능에는 네트워크 전체 광고 차단과 비브라우저 환경에서의 콘텐츠 차단이 포함됩니다. DNS sinkhole을 사용하여 광고를
+      차단하며, 모바일 앱과 스마트 TV를 포함합니다. DNS 쿼리 캐싱으로 일상적인 브라우징 속도를 높입니다. 명령줄 인터페이스는 신뢰할
+      수 있는 제어 옵션으로 상호 운용성을 보장합니다.
+
+
+      시스템 상태 보기와 관리를 위한 직관적인 웹 인터페이스 대시보드를 제공합니다. 선택적 DHCP 서버 기능으로 모든 기기를 자동으로
+      보호합니다. 서버급 하드웨어에서 높은 쿼리 볼륨을 처리할 수 있으며, IPv4와 IPv6에서 광고 차단을 지원합니다.
+
+
+      **주요 기능:**
+
+      - DNS sinkhole 기술을 통한 네트워크 전체 광고 차단
+
+      - 모바일 앱과 스마트 TV를 포함한 비브라우저 환경에서의 콘텐츠 차단
+
+      - 브라우징 속도 향상을 위한 DNS 쿼리 캐싱
+
+      - 상호 운용성을 위한 명령줄 인터페이스
+
+      - 시스템 보기와 제어를 위한 직관적 웹 인터페이스 대시보드
+
+      - 자동 기기 보호를 위한 선택적 DHCP 서버 기능
+
+      - IPv4와 IPv6 광고 차단 지원
+
+
+      **자세히 알아보기:**
+
+      - [Pi-hole 공식 웹사이트](https://pi-hole.net/)
+
+      - [Pi-hole GitHub](https://github.com/pi-hole/pi-hole)
+  developer: angyNeko
+  docs: https://docs.pi-hole.net
+  hostname: ""
+  icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/icon.svg
+  id: org.icewhale.pihole
+  index: /admin
+  is_uncontrolled: false
+  main: pihole
+  port_map: "8800"
+  release_notes:
+    en_GB: >-
+      - Docker image 2026.05.0 refreshes the Pi-hole container build and updates
+      container capability documentation.
+
+      - This Docker-specific release is light; review the upstream upgrade
+      impact section before updating production deployments.
+    en_US: >-
+      - Docker image 2026.05.0 refreshes the Pi-hole container build and updates
+      container capability documentation.
+
+  repo: https://github.com/pi-hole/pi-hole
+  repo_id: github.com@599ecafc
+  require_memory: 256M
+  scheme: http
+  screenshot_link:
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/screenshot-1.jpg
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/screenshot-2.jpg
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/screenshot-3.jpg
+  store_app_id: pihole
+  support: https://discourse.pi-hole.net
+  tagline:
+    en_GB: Network-wide Advert Blocking
+    en_US: Network-wide Ad Blocking
+  thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Pihole/thumbnaill.jpg
+  tips:
+    before_install:
+      en_GB: |
+        Default password: `casaos`
+      en_US: |
+        Default password: `casaos`
+  title:
+    custom: Pi-hole
+    en_US: Pi-hole
+  update_at: 2026-05-11T00:00:00Z
+  version: 2026.5.0
+  website: https://pi-hole.net/
