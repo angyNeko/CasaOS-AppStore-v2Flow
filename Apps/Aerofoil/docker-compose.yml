@@ -1,3 +1,4 @@
+name: aerofoil
 services:
   aerofoil:
     container_name: aerofoil
@@ -75,6 +76,9 @@ x-casaos:
   main: aerofoil
   port_map: "8465"
   scheme: http
+  tagline:
+    en_US: Personal library manager and self-hosted remote
   title:
     custom: AeroFoil
     en_US: AeroFoil
+  version: "1.0.0"

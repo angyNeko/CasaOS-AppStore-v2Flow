@@ -1,3 +1,4 @@
+name: immich
 networks:
   big_bear_immich_network:
     driver: bridge
@@ -144,7 +145,7 @@ x-casaos:
     en_US: Self-hosted photo and video storage.
   developer: immich-app
   hostname: ""
-  icon: https://cdn.jsdelivr.net/gh/selfhst/icons/png/immich.png
+  icon: /Apps/Immich/icon.svg
   id: com.bigbeartechworld.immich
   index: /
   main: immich-server
@@ -153,8 +154,9 @@ x-casaos:
   scheme: http
   store_app_id: big-bear-immich
   tagline:
-    en_US: Immich
+    en_US: Immich - Self-hosted photo and video management
   thumbnail: ""
   title:
     custom: Immich
     en_US: Immich
+  version: "1.0.0"
